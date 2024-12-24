@@ -31,29 +31,33 @@ public class RudimentaryCalc {
                 continue; // Rerun the program
             }
 
-            double number1 = Double.parseDouble(equation.substring(0, operatorIndex));
-            double number2 = Double.parseDouble(equation.substring(operatorIndex + 1));
+            try {
+                double number1 = Double.parseDouble(equation.substring(0, operatorIndex));
+                double number2 = Double.parseDouble(equation.substring(operatorIndex + 1));
 
-            switch (operator) {
-                case "+":
-                    System.out.println("Result: " + add(number1, number2));
-                    break;
-                case "-":
-                    System.out.println("Result: " + subtract(number1, number2));
-                    break;
-                case "*":
-                    System.out.println("Result: " + multiply(number1, number2));
-                    break;
-                case "/":
-                    System.out.println("Result: " + divide(number1, number2));
-                    break;
-                default:
-                    System.out.println("Invalid operator!");
-                    break;
+                switch (operator) {
+                    case "+":
+                        System.out.println("Result: " + add(number1, number2));
+                        break;
+                    case "-":
+                        System.out.println("Result: " + subtract(number1, number2));
+                        break;
+                    case "*":
+                        System.out.println("Result: " + multiply(number1, number2));
+                        break;
+                    case "/":
+                        System.out.println("Result: " + divide(number1, number2));
+                        break;
+                    default:
+                        System.out.println("Invalid operator!");
+                        break;
+                }
+
+                myObj.close();
+                break; // Exit the loop if the equation is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid equation! Please try again.");
             }
-
-            myObj.close();
-            break; // Exit the loop if the equation is valid
         }
     }
 
